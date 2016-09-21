@@ -102,6 +102,7 @@ KingofAttendances.ShiftSupervisor = new function () {
         $("#spDate").html(data[0].C3_525698130095 + "~" + data[0].C3_526580176792);
         $("#spMonth").html(data[0].C3_525698192994);
         $("#spMaster").html(data[0].C3_525715020942);
+        $("#spEverageHour").html(data[0].C3_527626009087);
         var o = data[0];
         if (data[0].C3_526410163545 == "Y") {
             $("#isIllegal").html("超标");

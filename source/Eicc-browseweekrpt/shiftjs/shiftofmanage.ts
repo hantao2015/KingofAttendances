@@ -135,7 +135,7 @@ KingofAttendances.ShiftManage=new function() {
             $("#spDate").html(data[0].C3_525698252634+"~"+data[0].C3_526580236305);
             $("#spMonth").html(data[0].C3_525698252852);
             $("#spSupervisor").html(data[0].C3_525697777450);
-          
+           $("#spEverageHour").html(data[0].C3_527627934738);
              var o = data[0];
            
             

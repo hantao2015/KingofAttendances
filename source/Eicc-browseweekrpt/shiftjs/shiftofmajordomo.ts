@@ -13,6 +13,7 @@ KingofAttendances.ShiftMajordomo=new function() {
             $("#spDate").html(data[0].C3_526389708966+"~"+data[0].C3_526580475483);
            
             $("#spMonth").html(data[0].C3_526389709184);
+               $("#spEverageHour").html(data[0].C3_527627855884);
             new mini.Form("form1").setData(o);
              var hrtext=mini.getbyName("C3_526389710526"); 
              appConfig.appfunction.textStyle.setInputStyle(hrtext);
@@ -37,14 +38,14 @@ KingofAttendances.ShiftMajordomo=new function() {
             $("#spDate").html(data[0].C3_525699725313+"~"+data[0].C3_526580294945);
             $("#spMonth").html(data[0].C3_525699725531);
             $("#spSupervisor").html(data[0].C3_525699725094);
-          
+           $("#spEverageHour").html(data[0].C3_527627780180);
              var o = data[0];
            
             
 			  if (data[0].C3_526393969049=="Y")
             {
              
-      $("#isIllegal").html("超标");
+     
         var list="<tr>"+
   "<td class='title' >"+
      " <span>超标原因类型：</span></td>"+
