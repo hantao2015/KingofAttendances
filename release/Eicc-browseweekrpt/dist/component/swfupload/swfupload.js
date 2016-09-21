@@ -1017,7 +1017,6 @@ SWFUpload.Console.writeLine = function (message) {
 						 
 					 }
 					
-
 				 }
 				 else
 				 {
