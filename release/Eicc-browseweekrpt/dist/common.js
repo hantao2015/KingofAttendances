@@ -149,11 +149,22 @@ var miniPanel = (function () {
         parentelement.appendChild(this.mini_control);
         mini.parse();
         var aPanel = mini.get(panelid);
-        aPanel.set({ "width": "auto", "height": "400px", "iconCls": iconCls, "buttons": "collapse ", "expanded": expanded, "onbuttonclick": "onbuttonclick" });
+        aPanel.set({ "width": "auto", "height": "500px", "iconCls": iconCls, "buttons": "collapse", "expanded": expanded, "onbuttonclick": "onbuttonclick" });
         aPanel.load(url, function () {
             var iFrame = aPanel.getIFrameEl();
             fnload(iFrame);
         }, null);
+    };
+    miniPanel.prototype.PanelAddbutton = function (panel, buttonname, icon, buttonid, css) {
+        var abutton = document.createElement('a');
+        abutton.className = "mini-button";
+        abutton.id = buttonid;
+        abutton.text = buttonname;
+        panel.set({ "showToolbar": true });
+        panel.setToolbar(abutton);
+        mini.parse();
+        var minibt = mini.get(buttonid);
+        minibt.set({ "iconCls": icon, "style": css });
     };
     return miniPanel;
 }());

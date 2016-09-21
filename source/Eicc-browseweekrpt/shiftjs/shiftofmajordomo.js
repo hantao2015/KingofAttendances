@@ -22,6 +22,9 @@ KingofAttendances.ShiftMajordomo = new function () {
         hrtext = mini.getbyName("C3_526389711259");
         appConfig.appfunction.textStyle.setInputStyle(hrtext);
     };
+    shiftMajordomo.getImgurl = function () {
+        return $("#hfurl").val();
+    };
     shiftMajordomo.setData2 = function (data, bdbs, aappConfig) {
         dbs = bdbs;
         appConfig = aappConfig;
@@ -66,7 +69,6 @@ KingofAttendances.ShiftMajordomo = new function () {
         return;
     };
     shiftMajordomo.saveData2 = function () {
-        var url = $("#hfurl").val();
         var o = new mini.Form("form1").getData();
         o._id = 1;
         o._state = "modified";

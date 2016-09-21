@@ -31,15 +31,16 @@ var Shiftrptofsuper = (function (_super) {
         var aLineleader = new Lineleader();
         var className = "";
         var dates = "";
-        var title;
+        var title = "";
         aLineleader = data[0];
-        if (data[0].C3_526410163545 == "Y") {
+        if (data[0].C3_526410202841 == "Y") {
             className = "mini-panel mini-panel-danger";
+            title += "<span style='color:red'> 【已审批】</span>";
         }
         else {
             className = "mini-panel mini-panel-success";
         }
-        title = data[0].C3_525642615889 + data[0].C3_525715020942 + "排班" + data[0].C3_525715678864 + "人，" + "排班" + data[0].C3_526578100819 + "小时";
+        title += data[0].C3_525642615889 + data[0].C3_525715020942 + "排班" + data[0].C3_525715678864 + "人，" + "排班" + data[0].C3_526578100819 + "小时，" + "人均排班" + data[0].C3_527626009087 + "小时";
         data[0].C3_525718264194 = (data[0].C3_525718264194 * 100);
         data[0].C3_525718264474 = (data[0].C3_525718264474 * 100);
         data[0].C3_525718264693 = (data[0].C3_525718264693 * 100);
@@ -54,8 +55,9 @@ var Shiftrptofsuper = (function (_super) {
         var className = "";
         var dates = "";
         var title;
-        dates = (data[0].C3_525698252634);
-        title = dates + "日产线排班整体情况";
+        var style = "";
+        dates = (data[0].C3_525698252634 + "~" + data[0].C3_526580236305);
+        title = dates + " 日产线排班整体情况<br>" + dates + " Shift Arrangement Overall Data";
         if (data[0].C3_526393560160 == "Y") {
             className = "mini-panel mini-panel-danger";
         }
@@ -69,9 +71,33 @@ var Shiftrptofsuper = (function (_super) {
         _super.prototype.appendPanel.call(this, parentelement, panelid, mini, className, title, appConfig.shifrpttofsuper.mainHtml, function (iFrame) {
             iFrame.contentWindow.KingofAttendances.ShiftSupervisor.setData(data, dbs, appConfig);
         }, true, "");
+        var aPanle = mini.get(panelid);
+        _super.prototype.PanelAddbutton.call(this, aPanle, "查看附件", "icon-search", "button1", "float:right;margin-right:20px");
+        mini.parse();
+        var abutton = mini.get("button1");
+        abutton.set({ "onclick": "onclickButton1" });
+        var el = aPanle.getHeaderEl();
+        el.id = "panelHeader";
+        $(".mini-panel-title").css({ "float": "none", "text-align": "center" });
     };
     return Shiftrptofsuper;
 }(miniPanel));
+function onclickButton1(e) {
+    var panel = mini.get("supervisor");
+    var iFrame = panel.getIFrameEl();
+    var imgurl = iFrame.contentWindow.KingofAttendances.ShiftSupervisor.getImgurl();
+    var win = mini.open({
+        url: '../dist/component/imgwindow.html',
+        showModal: false,
+        width: 800,
+        height: 600,
+        onload: function () {
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.Setimg(imgurl);
+        },
+    });
+}
+;
 function main() {
     baseUrl = appConfig.app.baseUrl;
     getMethod = appConfig.app.getMethod;
@@ -103,6 +129,7 @@ function main() {
                 });
             }
         }
+        $(".mini-panel").css({ "padding-top": "10px" });
     }
     function fnerror(data) {
         alert(data.message);

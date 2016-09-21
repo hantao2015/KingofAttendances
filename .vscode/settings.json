@@ -6,7 +6,7 @@
        "source/Eicc-browseweekrpt/*.js":true,
         "source/Eicc-browseweekrpt/shiftjs/*.js":true,
         "test/**/*.js": false,
-        "release":true,
+        
         "source/entities":true,
         "source/interfaces":true,
         "source/*.*":true

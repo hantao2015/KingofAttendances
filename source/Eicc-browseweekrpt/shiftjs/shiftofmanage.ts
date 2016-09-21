@@ -3,6 +3,19 @@ KingofAttendances.ShiftManage=new function() {
     var shiftManage = this;
     var dbs;
     var appConfig;
+     shiftManage.ajaxFileUpload=function(){
+          var inputFile = $("#file1 > input:file")[0];
+          appConfig.appfunction.uploadFile.ajaxFileUpload(appConfig,inputFile);
+       }
+     shiftManage.swfFileUpload=function(){
+        
+           mini.parse();
+           var fileupload = mini.get("fileupload1");
+          appConfig.appfunction.uploadFile.swfFileUpload(appConfig,fileupload);
+       }
+    shiftManage.getImgurl=function(){
+       return  $("#imgUploaded")[0].src;
+    }
     shiftManage.setData=function(data,adbs,aappConfig){
        var o = data[0];
            dbs=adbs;
@@ -10,16 +23,13 @@ KingofAttendances.ShiftManage=new function() {
             $("#spCount").html(data[0].C3_525716987383);
             $("#spHour").html(data[0].C3_526578576195);
             $("#spDate").html(data[0].C3_525699725313+"~"+data[0].C3_526580294945);
-            //$("#spMajordomo").html(data[0].C3_525699845153);
             $("#spMonth").html(data[0].C3_525699725531);
             $("#spManage").html(data[0].C3_525699725094);
-          
-             function fnSuccess(data,subdata){ mini.parse();mini.get("cbReasons").set({"data":data});}      
-           
+             $("#spEverageHour").html(data[0].C3_527627780180);
             if (data[0].C3_526393969049=="Y")
             {
              
-        $("#isIllegal").html("超标");
+
     
     var list="<tr>"+
   "<td class='title'>"+
@@ -28,21 +38,32 @@ KingofAttendances.ShiftManage=new function() {
   "<td><span lang='EN-US' style='color:#0070C0' </span>"+
  "</td></tr><tr>"+
  " <td class='title'><span>超标原因描述：</span>"+
-  "</td></td><td colspan=2>"+
-  "<input  name='C3_526417619250' class='mini-textarea'  />"+
-  "</td><td  >"+
-  "<a class='mini-button' id='asave' onclick='KingofAttendances.ShiftManage.saveData' >超标申请</a>  </td></tr>";
-
+  "</td><td colspan=2>"+
+  "<input  name='C3_526417619250' class='mini-textarea' style='width:100%;' />"+
+  "</td></tr>"+
+   
+                       "<tr><td class='title'>附件</td>"+
+                      " <td colspan=3><input id='fileupload1' name='' onuploaderror='onUploadError' onfileselect='onFileSelect' onuploadsuccess='onUploadSuccess'  uploadUrl='upload.aspx' flashUrl='swfupload/swfupload.swf' class='mini-fileupload' uploadOnSelect=true name='Fdata' "+   
+                      " limitType='*.jpg;*.jpeg;*.png' style='width:90%;' /></td></tr>"+
+                      "<tr><td class='title'></td><td colspan=2><img align='middle' style='margin-left:100px;width:200px;height=200px;position:relative;' id='imgUploaded'  /></td>"+
+                        "<td  >"+
+                       "<a class='mini-button' id='asave' onclick='KingofAttendances.ShiftManage.saveData' style='position:absolute;bottom:2px;right:2px;' >超标申请</a></td></tr>";//+
         
           $("#tbManage tbody").append(list);
-          
-        var resid=526765618499;
+           mini.parse();
+            var fileupload = mini.get("fileupload1");
+
+         fileupload.setUploadUrl(aappConfig.app.uploadFileUrl+"?savepath=e:\\web\\rispweb\\upfiles&httppath="+aappConfig.app.httppath);
+        //var resid=526765618499;
+        var resid=appConfig.app.dic1Resid;
         var subresid="";
         var cmswhere=""
       
          dbs.dbGetdata(resid,0,cmswhere,fnSuccess,null,null);
       
    
+       function fnSuccess(data,subdata){ mini.parse();mini.get("cbReasons").set({"data":data});}          
+
             }
             else 
             {
@@ -52,11 +73,19 @@ KingofAttendances.ShiftManage=new function() {
               if (data[0].C3_526417619765=="Y")
            {
              mini.parse();
+           mini.get("fileupload1").enabled=false;   
             mini.get("asave").set({"text":"已申请"});
-               mini.get("asave").enabled=false;
+            mini.get("asave").enabled=false;
            }
             
              new mini.Form("form1").setData(o);
+               var imgfield=mini.get('imgurl');
+			var imgurl= imgfield.getValue();
+            if (imgurl)
+            {
+                 var img=$("#imgUploaded");
+                 img[0].src=imgurl;
+            }
               var hrtext=mini.getbyName("C3_525716986259"); 
              appConfig.appfunction.textStyle.setInputStyle(hrtext);
              hrtext=mini.getbyName("C3_525716986041"); 
@@ -66,6 +95,10 @@ KingofAttendances.ShiftManage=new function() {
                hrtext=mini.getbyName("C3_525716985573"); 
               appConfig.appfunction.textStyle.setInputStyle(hrtext);
             return;
+    }
+
+      shiftManage.getImgurl2=function(){
+       return  $("#hfurl").val();
     }
   shiftManage.saveData=function(){
       
@@ -92,6 +125,8 @@ KingofAttendances.ShiftManage=new function() {
          }
             
   }
+
+ 
   shiftManage.setData2=function(data,bdbs,aappConfig){
     dbs=bdbs;
     appConfig= aappConfig;
@@ -111,13 +146,14 @@ KingofAttendances.ShiftManage=new function() {
                var list="<tr>"+
   "<td class='title' >"+
      " <span>超标原因类型：</span></td>"+
- "<td><input  name='C3_526393593762' class='mini-textarea' allowInput='false' /></span></td>"+
+    
+ "<td colspan=2><input  name='C3_526393593762' class='mini-textarea' allowInput='false' style='width:100%;' /></span></td>"+
   "<td><span ><span lang='EN-US' style='color:#0070C0' </span>"+
  "</td></tr><tr>"+
  " <td class='title'><span>超标原因描述：</span>"+
-  "</td></td><td  colspan='2' "+
-  "<input  name='C3_526416460460' class='mini-textarea' allowInput='false' /></td><td  >"+
-  "<a class='mini-button' id='asp' onclick='KingofAttendances.ShiftManage.saveData2' >超标审批</a>  </td></tr>";
+   "</td><td colspan=2>"+
+  "<input  name='C3_526416460460' class='mini-textarea' style='width:100%;' allowInput='false' /></td>"+
+  "<td><a class='mini-button' id='asp' onclick='KingofAttendances.ShiftManage.saveData2' >超标审批</a>  </td></tr>";
 
         var a=list;
           $("#tbsupervisor tbody").append(list);

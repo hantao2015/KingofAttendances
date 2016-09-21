@@ -14,7 +14,8 @@
   <span ><span>人</span><span ><o:p></o:p></span></span></p></td>
 		<td   class="headtimezone"><p ><span ><span >排班</span><span > <span  id="spHour"></span></span></span>
   <span   class="headtimezone"><span>小时</span><span ><o:p></o:p></span></span></p></td>
-		<td   class="headtimezone"><span  id="isIllegal"  ></span></span></td>
+		<td   class="headtimezone"><p ><span ><span >人均排班</span><span > <span  id="spEverageHour"></span></span></span>
+  <span   class="headtimezone"><span>小时</span><span ><o:p></o:p></span></span></p></td>
 	</tr>
 	<tr>
 		
@@ -24,7 +25,7 @@
 		<td  class="head">超标等级</td>
 	</tr>
 	<tr>
-			<td class="title"><span >60 < WH < 72</span></td>
+			<td class="title">hr=60</td>
            <td class="content"><span ><input name="C3_525718184010" class="mini-textbox"  allowInput="false"/></td>
 		<td class="content"><span ><input  name="C3_525716459558" class="mini-textbox"  allowInput="false"/></td>
 		<td class="content"><span ><input   name="C3_525716460432" class="mini-textbox"  allowInput="false"/></span></td>
@@ -32,21 +33,21 @@
 	</tr>
 	
 	<tr>
-			<td class="title"><span> 72 < WH <84</span></td>
+			<td class="title"><span class="SpellE">hr</span>&lt;=72</td>
            <td  ><span ><input  name="C3_525718184259" class="mini-textbox"  allowInput="false"/></td>
 		<td ><span ><input  name="C3_525716459777" class="mini-textbox"  allowInput="false"/></td>
 		<td  ><span ><input    name="C3_525716460666" class="mini-textbox"  allowInput="false"/></span></td>
 	
 	</tr>
 <tr>
-<td class="title"><span> Any > 84 hr</span></td>
+<td class="title"> 72&lt;<span class="SpellE">hr</span>&lt;84</td>
            <td ><span ><input  name="C3_525718184478" class="mini-textbox"  allowInput="false"/></td>
 		<td ><span ><input   name="C3_525716459995" class="mini-textbox"  allowInput="false"/></td>
 		<td ><span ><input   name="C3_525716460900" class="mini-textbox"  allowInput="false"/></span></td>
 	
 	</tr>
 	<tr>
-			<td class="title"> <span >> =7 Consecutive Days</span></td>
+			<td class="title">   <span >连续</span><span >7</span></span><span><span >天</span></td>
            <td ><span ><input   name="C3_525718184727" class="mini-textbox"  allowInput="false"/></td>
 		<td ><span ><input    name="C3_525716460213" class="mini-textbox"  allowInput="false"/></td>
 		<td ><span ><input    name="C3_525716461134" class="mini-textbox"  allowInput="false"/></span></td>
@@ -54,10 +55,8 @@
 	</tr>
 
  </tbody>
-</table>    
+</table>     
  
- 
-
 <input  name="C3_526393734192" class="mini-Hidden"  allowInput="false"/>
 	<input  name="REC_ID" class="mini-Hidden"    allowInput="false"/>
 	<input  id="hfurl" class="mini-Hidden"  allowInput="false"/>  

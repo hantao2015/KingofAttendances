@@ -7,7 +7,6 @@ KingofAttendances.ShiftMajordomo=new function() {
        var o = data[0];
        dbs=adbs;
        appConfig=aappConfig;
-           
             $("#spMajordomo").html(data[0].C3_526389708747);
             $("#spCount").html(data[0].C3_526389709403);
             $("#spHour").html(data[0].C3_526578899253);
@@ -24,6 +23,11 @@ KingofAttendances.ShiftMajordomo=new function() {
                hrtext=mini.getbyName("C3_526389711259"); 
               appConfig.appfunction.textStyle.setInputStyle(hrtext);
           
+         
+    }
+
+      shiftMajordomo.getImgurl=function(){
+       return  $("#hfurl").val();
     }
   shiftMajordomo.setData2=function(data,bdbs,aappConfig){
         dbs=bdbs;
@@ -83,7 +87,6 @@ KingofAttendances.ShiftMajordomo=new function() {
 }
 
  shiftMajordomo. saveData2=function() {
-      var url=$("#hfurl").val();
      
             var o = new mini.Form("form1").getData();            
              o._id=1;

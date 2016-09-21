@@ -175,15 +175,34 @@ class miniPanel {
         this.mini_control.id = panelid;
         this.mini_control.className=classname;
         this.mini_control.title=title;
+       
         parentelement.appendChild(this.mini_control);
         mini.parse();
         var aPanel = mini.get(panelid);
-        aPanel.set({"width":"auto","height":"400px","iconCls":iconCls,"buttons":"collapse ","expanded":expanded,"onbuttonclick":"onbuttonclick"});
+        aPanel.set({"width":"auto","height":"500px","iconCls":iconCls,"buttons":"collapse","expanded":expanded,"onbuttonclick":"onbuttonclick"});
         aPanel.load(url, function () {
             var iFrame = aPanel.getIFrameEl();
              fnload(iFrame);
         },null);
            
+    }
+    PanelAddbutton(panel:any,buttonname:string,icon:string,buttonid:string,css:string)
+    {
+        //<a class="mini-button" iconCls="icon-edit" onclick="onClick">Edit</a>
+       
+       var abutton:HTMLElement=document.createElement('a');
+      
+        abutton.className="mini-button";
+        abutton.id=buttonid;
+        abutton.text=buttonname;
+         
+        
+        panel.set({"showToolbar":true});
+        panel.setToolbar ( abutton );
+        mini.parse();
+        var minibt=mini.get(buttonid);
+        minibt.set({"iconCls":icon,"style":css});
+
     }
     
  

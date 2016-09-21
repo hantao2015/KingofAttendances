@@ -971,6 +971,7 @@ SWFUpload.Console.writeLine = function (message) {
 		console = document.getElementById("SWFUpload_Console");
 
 		if (!console) {
+		
 			documentForm = document.createElement("form");
 			document.getElementsByTagName("body")[0].appendChild(documentForm);
 
@@ -983,6 +984,7 @@ SWFUpload.Console.writeLine = function (message) {
 			console.style.width = "700px";
 			console.style.height = "350px";
 			console.style.margin = "5px";
+			
 			documentForm.appendChild(console);
 		}
 
@@ -995,7 +997,7 @@ SWFUpload.Console.writeLine = function (message) {
 };
  
  function onFileSelect(e) {
-       
+
                 }
        function onUploadSuccess(e) {
 
