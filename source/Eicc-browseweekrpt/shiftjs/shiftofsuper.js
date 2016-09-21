@@ -79,7 +79,6 @@ KingofAttendances.ShiftSupervisor = new function () {
         o._id = 1;
         o._state = "modified";
         var json = mini.encode([o]);
-        alert(appConfig.shifrpttofsuper.resid);
         dbs.dbSavedata(appConfig.shifrpttofsuper.resid, 0, json, dataSaved, fnerror, fnhttperror);
         function dataSaved(text) {
             alert("申请成功");
