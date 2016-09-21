@@ -12,6 +12,7 @@ KingofAttendances.ShiftMajordomo = new function () {
         $("#spHour").html(data[0].C3_526578899253);
         $("#spDate").html(data[0].C3_526389708966 + "~" + data[0].C3_526580475483);
         $("#spMonth").html(data[0].C3_526389709184);
+        $("#spEverageHour").html(data[0].C3_527627855884);
         new mini.Form("form1").setData(o);
         var hrtext = mini.getbyName("C3_526389710526");
         appConfig.appfunction.textStyle.setInputStyle(hrtext);
@@ -22,6 +23,9 @@ KingofAttendances.ShiftMajordomo = new function () {
         hrtext = mini.getbyName("C3_526389711259");
         appConfig.appfunction.textStyle.setInputStyle(hrtext);
     };
+    shiftMajordomo.getImgurl = function () {
+        return $("#hfurl").val();
+    };
     shiftMajordomo.setData2 = function (data, bdbs, aappConfig) {
         dbs = bdbs;
         appConfig = aappConfig;
@@ -30,9 +34,9 @@ KingofAttendances.ShiftMajordomo = new function () {
         $("#spDate").html(data[0].C3_525699725313 + "~" + data[0].C3_526580294945);
         $("#spMonth").html(data[0].C3_525699725531);
         $("#spSupervisor").html(data[0].C3_525699725094);
+        $("#spEverageHour").html(data[0].C3_527627780180);
         var o = data[0];
         if (data[0].C3_526393969049 == "Y") {
-            $("#isIllegal").html("超标");
             var list = "<tr>" +
                 "<td class='title' >" +
                 " <span>超标原因类型：</span></td>" +
@@ -66,7 +70,6 @@ KingofAttendances.ShiftMajordomo = new function () {
         return;
     };
     shiftMajordomo.saveData2 = function () {
-        var url = $("#hfurl").val();
         var o = new mini.Form("form1").getData();
         o._id = 1;
         o._state = "modified";
