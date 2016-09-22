@@ -79,6 +79,7 @@ KingofAttendances.ShiftManage=new function() {
            }
             
              new mini.Form("form1").setData(o);
+             mini.parse();
                var imgfield=mini.get('imgurl');
 			var imgurl= imgfield.getValue();
             if (imgurl)

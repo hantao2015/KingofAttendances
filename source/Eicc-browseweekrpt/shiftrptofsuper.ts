@@ -123,7 +123,14 @@ function onclickButton1 (e){
     },
         });
 };
-function main() {
+window.onload = function()  {
+    $.getJSON("./dist/app.config.json",function(data,textStatus,hr){appConfig=data;
+        appConfig.appfunction=appfunctions;
+        main();});
+}
+function main()
+{
+//load file
     //alert(appConfig.app.baseUrl);
     baseUrl=appConfig.app.baseUrl;
     getMethod=appConfig.app.getMethod;

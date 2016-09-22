@@ -96,7 +96,7 @@ function onclickButton1(e) {
     });
 }
 ;
-function main() {
+window.onload = function () {
     baseUrl = appConfig.app.baseUrl;
     getMethod = appConfig.app.getMethod;
     saveMethod = appConfig.app.saveMethod;
@@ -130,5 +130,4 @@ function main() {
         alert(data.message);
     }
     function fnhttperror(jqXHR, textStatus, errorThrown) { alert(jqXHR.responseText); }
-}
-;
+};
