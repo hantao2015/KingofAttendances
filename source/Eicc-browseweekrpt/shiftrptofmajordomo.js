@@ -97,6 +97,13 @@ function onclickButton1(e) {
 }
 ;
 window.onload = function () {
+    $.getJSON("./dist/app.config.json", function (data, textStatus, hr) {
+        appConfig = data;
+        appConfig.appfunction = appfunctions;
+        main();
+    });
+};
+function main() {
     baseUrl = appConfig.app.baseUrl;
     getMethod = appConfig.app.getMethod;
     saveMethod = appConfig.app.saveMethod;
@@ -130,4 +137,5 @@ window.onload = function () {
         alert(data.message);
     }
     function fnhttperror(jqXHR, textStatus, errorThrown) { alert(jqXHR.responseText); }
-};
+}
+;
