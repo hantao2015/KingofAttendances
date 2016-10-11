@@ -34,7 +34,7 @@ class ShiftrptofMajordomo extends miniPanel {
         
           if(data[0].C3_526393969049=="Y"){
         
-          title+="<span style='color:red'> 【已审批】</span>";
+          title+="<span style='color:red'> 【已超标】</span>";
             className="mini-panel mini-panel-danger";
       }
       else{

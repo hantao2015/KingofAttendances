@@ -33,7 +33,7 @@ var Shiftrptofmanage = (function (_super) {
         var title = "";
         if (data[0].C3_526393560160 == "Y") {
             className = "mini-panel mini-panel-danger";
-            title += "<span style='color:red'> 【已审批】</span>";
+            title += "<span style='color:red'> 【已超标】</span>";
         }
         else {
             className = "mini-panel mini-panel-success";
@@ -141,7 +141,7 @@ function main() {
     var subresid = appConfig.shifrpttofmanager.subresid;
     var cmswhere;
     if (appConfig.app.debug) {
-        cmswhere = "C3_525699724860=392";
+        cmswhere = "C3_525699724860=2168";
     }
     shiftPanel.start();
     var url;

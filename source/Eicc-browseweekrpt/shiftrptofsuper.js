@@ -33,9 +33,9 @@ var Shiftrptofsuper = (function (_super) {
         var dates = "";
         var title = "";
         aLineleader = data[0];
-        if (data[0].C3_526410202841 == "Y") {
+        if (data[0].C3_526410163545 == "Y") {
             className = "mini-panel mini-panel-danger";
-            title += "<span style='color:red'> 【已审批】</span>";
+            title += "<span style='color:red'> 【已超标】</span>";
         }
         else {
             className = "mini-panel mini-panel-success";
