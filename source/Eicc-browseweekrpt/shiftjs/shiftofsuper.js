@@ -24,7 +24,6 @@ KingofAttendances.ShiftSupervisor = new function () {
         $("#spDate").html(data[0].C3_525698252634 + "~" + data[0].C3_526580236305);
         $("#spPervisor").html(data[0].C3_525697777450);
         $("#spMonth").html(data[0].C3_525698252852);
-        $("#spManage").html(data[0].C3_525697777887);
         $("#spEverageHour").html(data[0].C3_527627934738);
         if (data[0].C3_526393560160 == "Y") {
             var list = "<tr>" +
@@ -43,7 +42,7 @@ KingofAttendances.ShiftSupervisor = new function () {
             $("#tbsupervisor tbody").append(list);
             mini.parse();
             var fileupload = mini.get("fileupload1");
-            fileupload.setUploadUrl(aappConfig.app.uploadFileUrl + "?savepath=e:\\web\\rispweb\\upfiles&httppath=" + aappConfig.app.httppath);
+            fileupload.setUploadUrl(aappConfig.app.uploadFileUrl + "?savepath=d:\\web\\rispweb\\upfiles&httppath=" + aappConfig.app.httppath);
             var resid = appConfig.app.dic1Resid;
             var subresid = "";
             var cmswhere = "";
@@ -54,6 +53,12 @@ KingofAttendances.ShiftSupervisor = new function () {
             mini.parse();
             mini.get("fileupload1").enabled = false;
             mini.get("asave").set({ "text": "已申请" });
+            mini.get("asave").enabled = false;
+        }
+        if (data[0].C3_526393734192 == "N") {
+            mini.parse();
+            mini.get("fileupload1").enabled = false;
+            mini.get("asave").set({ "text": "已拒绝" });
             mini.get("asave").enabled = false;
         }
         mini.parse();
@@ -106,13 +111,20 @@ KingofAttendances.ShiftSupervisor = new function () {
         if (data[0].C3_526410163545 == "Y") {
             $("#isIllegal").html("超标");
             var list = "<tr ><td class='title' colspan='4'  >" +
-                "<a class='mini-button' id='asp' onclick='KingofAttendances.ShiftSupervisor.saveData2' >超标审批</a></td></tr>";
+                "<a class='mini-button' id='asp' onclick='KingofAttendances.ShiftSupervisor.saveData2' >超标审批</a><a class='mini-button' id='asp1' onclick='KingofAttendances.ShiftSupervisor.saveData3' >拒绝申请</a></td></tr>";
             var a = list;
             $("#tbLineleader tbody").append(list);
             if (data[0].C3_526410202841 == "Y") {
                 mini.parse();
                 mini.get("asp").set({ "text": "已审批" });
                 mini.get("asp").enabled = false;
+                mini.get("asp1").set({ "visible": false });
+            }
+            if (data[0].C3_526410202841 == "N") {
+                mini.parse();
+                mini.get("asp").set({ "text": "已拒绝" });
+                mini.get("asp").enabled = false;
+                mini.get("asp1").set({ "visible": false });
             }
         }
         else {
@@ -131,23 +143,55 @@ KingofAttendances.ShiftSupervisor = new function () {
         return;
     };
     shiftSupervisor.saveData2 = function () {
-        var url = $("#hfurl").val();
-        var o = new mini.Form("form1").getData();
-        o._id = 1;
-        o._state = "modified";
-        o.C3_526410202841 = "Y";
-        var json = mini.encode([o]);
-        dbs.dbSavedata(appConfig.shifrpttofsuper.subresid, 0, json, dataSaved, fnerror, fnhttperror);
-        function dataSaved(text) {
-            alert("审批成功");
-            mini.get("asp").set({ "text": "已审批" });
-            mini.get("asp").enabled = false;
+        if (confirm('您确定要审批么？')) {
+            var url = $("#hfurl").val();
+            var o = new mini.Form("form1").getData();
+            o._id = 1;
+            o._state = "modified";
+            o.C3_526410202841 = "Y";
+            var json = mini.encode([o]);
+            dbs.dbSavedata(appConfig.shifrpttofsuper.subresid, 0, json, dataSaved, fnerror, fnhttperror);
+            function dataSaved(text) {
+                alert("审批成功");
+                mini.get("asp1").enabled = false;
+                mini.get("asp").set({ "text": "已审批" });
+                mini.get("asp").enabled = false;
+            }
+            function fnerror(text) {
+                alert("审批失败");
+            }
+            function fnhttperror(jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
         }
-        function fnerror(text) {
-            alert("审批失败");
+        else {
+            return;
         }
-        function fnhttperror(jqXHR, textStatus, errorThrown) {
-            alert("error");
+    };
+    shiftSupervisor.saveData3 = function () {
+        if (confirm('您确定要拒绝么？')) {
+            var url = $("#hfurl").val();
+            var o = new mini.Form("form1").getData();
+            o._id = 1;
+            o._state = "modified";
+            o.C3_526410202841 = "N";
+            var json = mini.encode([o]);
+            dbs.dbSavedata(appConfig.shifrpttofsuper.subresid, 0, json, dataSaved, fnerror, fnhttperror);
+            function dataSaved(text) {
+                alert("操作成功");
+                mini.get("asp").enabled = false;
+                mini.get("asp1").set({ "text": "已拒绝" });
+                mini.get("asp1").enabled = false;
+            }
+            function fnerror(text) {
+                alert("操作失败");
+            }
+            function fnhttperror(jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
+        }
+        else {
+            return;
         }
     };
 };

@@ -64,7 +64,13 @@ width:200px;
 
 }
 
-
+.lf{
+    float:left;
+}
+.rf{
+    float:right;
+    margin-right:5px;
+}
 .mini-textbox input
 {
     

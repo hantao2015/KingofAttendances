@@ -79,7 +79,6 @@ class ShiftrptofMajordomo extends miniPanel {
        super.appendPanel(parentelement,panelid,mini,className,title,appConfig.shifrpttofdirector.mainHtml,
            function(iFrame){
                iFrame.contentWindow.KingofAttendances.ShiftMajordomo.setData(data,dbs,appConfig);
-
             }
               ,true,"");
                var aPanle=mini.get(panelid);

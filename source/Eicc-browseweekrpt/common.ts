@@ -51,6 +51,7 @@ appfunctions.uploadFile=new function (){
 appfunctions.textStyle=new function (){
     var textStyle=this;
     textStyle.setInputStyle=function (hrtext){
+
      if (hrtext.getValue()=='priority')
             {
               hrtext.set({"inputStyle":"background-color:red"});

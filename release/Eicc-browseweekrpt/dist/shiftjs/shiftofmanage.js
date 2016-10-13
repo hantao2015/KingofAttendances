@@ -61,6 +61,12 @@ KingofAttendances.ShiftManage = new function () {
             mini.get("asave").set({ "text": "已申请" });
             mini.get("asave").enabled = false;
         }
+        if (data[0].C3_526417619765 == "N") {
+            mini.parse();
+            mini.get("fileupload1").enabled = false;
+            mini.get("asave").set({ "text": "已拒绝" });
+            mini.get("asave").enabled = false;
+        }
         new mini.Form("form1").setData(o);
         mini.parse();
         var imgfield = mini.get('imgurl');
@@ -122,7 +128,7 @@ KingofAttendances.ShiftManage = new function () {
                 " <td class='title'><span>超标原因描述：</span>" +
                 "</td><td colspan=2>" +
                 "<input  name='C3_526416460460' class='mini-textarea' style='width:100%;' allowInput='false' /></td>" +
-                "<td><a class='mini-button' id='asp' onclick='KingofAttendances.ShiftManage.saveData2' >超标审批</a>  </td></tr>";
+                "<td><a class='mini-button' id='asp' onclick='KingofAttendances.ShiftManage.saveData2' >超标审批</a><a class='mini-button' id='asp1' onclick='KingofAttendances.ShiftManage.saveData3' >拒绝申请</a></td></tr>";
             var a = list;
             $("#tbsupervisor tbody").append(list);
         }
@@ -133,6 +139,13 @@ KingofAttendances.ShiftManage = new function () {
             mini.parse();
             mini.get("asp").set({ "text": "已审批" });
             mini.get("asp").enabled = false;
+            mini.get("asp1").set({ "visible": false });
+        }
+        if (data[0].C3_526416147534 == "N") {
+            mini.parse();
+            mini.get("asp").set({ "text": "已拒绝" });
+            mini.get("asp").enabled = false;
+            mini.get("asp1").set({ "visible": false });
         }
         mini.parse();
         new mini.Form("form1").setData(o);
@@ -147,23 +160,56 @@ KingofAttendances.ShiftManage = new function () {
         return;
     };
     shiftManage.saveData2 = function () {
-        var url = $("#hfurl").val();
-        var o = new mini.Form("form1").getData();
-        o._id = 1;
-        o._state = "modified";
-        o.C3_526416147534 = "Y";
-        var json = mini.encode([o]);
-        dbs.dbSavedata(525697747154, 0, json, dataSaved, fnerror, fnhttperror);
-        function dataSaved(text) {
-            alert("审批成功");
-            mini.get("asp").set({ "text": "已审批" });
-            mini.get("asp").enabled = false;
+        if (confirm('您确定要审批么？')) {
+            var url = $("#hfurl").val();
+            var o = new mini.Form("form1").getData();
+            o._id = 1;
+            o._state = "modified";
+            o.C3_526416147534 = "Y";
+            var json = mini.encode([o]);
+            dbs.dbSavedata(525697747154, 0, json, dataSaved, fnerror, fnhttperror);
+            function dataSaved(text) {
+                alert("审批成功");
+                mini.get("asp1").enabled = false;
+                mini.get("asp").set({ "text": "已审批" });
+                mini.get("asp").enabled = false;
+            }
+            function fnerror(text) {
+                alert("审批失败");
+            }
+            function fnhttperror(jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
         }
-        function fnerror(text) {
-            alert("审批失败");
+        else {
+            return;
         }
-        function fnhttperror(jqXHR, textStatus, errorThrown) {
-            alert("error");
+    };
+    shiftManage.saveData3 = function () {
+        if (confirm('您确定拒绝么？')) {
+            var url = $("#hfurl").val();
+            var o = new mini.Form("form1").getData();
+            o._id = 1;
+            o._state = "modified";
+            o.C3_526416147534 = "N";
+            o.C3_526393734192 = "N";
+            var json = mini.encode([o]);
+            dbs.dbSavedata(525697747154, 0, json, dataSaved, fnerror, fnhttperror);
+            function dataSaved(text) {
+                alert("操作成功");
+                mini.get("asp").enabled = false;
+                mini.get("asp1").set({ "text": "已拒绝" });
+                mini.get("asp1").enabled = false;
+            }
+            function fnerror(text) {
+                alert("审批失败");
+            }
+            function fnhttperror(jqXHR, textStatus, errorThrown) {
+                alert("error");
+            }
+        }
+        else {
+            return;
         }
     };
 };
