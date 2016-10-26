@@ -65,10 +65,10 @@ KingofAttendances.ShiftSupervisor=new function() {
         var cmswhere=""
       
       
-       dbs.dbGetdata(resid,0,cmswhere,fnSuccess,null,null);
+       dbs.dbGetdata(resid,0,cmswhere, function  (data,subdata){ mini.parse();mini.get("cbReasons").set({"data":data});}    ,null,null);
       
       
-       function fnSuccess(data,subdata){ mini.parse();mini.get("cbReasons").set({"data":data});}          
+             
 
             }
            

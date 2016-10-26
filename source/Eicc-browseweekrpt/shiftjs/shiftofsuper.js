@@ -46,8 +46,7 @@ KingofAttendances.ShiftSupervisor = new function () {
             var resid = appConfig.app.dic1Resid;
             var subresid = "";
             var cmswhere = "";
-            dbs.dbGetdata(resid, 0, cmswhere, fnSuccess, null, null);
-            function fnSuccess(data, subdata) { mini.parse(); mini.get("cbReasons").set({ "data": data }); }
+            dbs.dbGetdata(resid, 0, cmswhere, function (data, subdata) { mini.parse(); mini.get("cbReasons").set({ "data": data }); }, null, null);
         }
         if (data[0].C3_526393734192 == "Y") {
             mini.parse();
