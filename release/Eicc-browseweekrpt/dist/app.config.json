@@ -6,7 +6,7 @@
         "httppath":"http://wux-hr03/rispweb/upfiles",
         "saveMethod":"SaveData_Ajax",
         "dic1Resid":526765618499,
-        "debug":true
+        "debug":false
     },
     "shifrpttofsuper":{
         "mainHtml":"./dist/component/shiftsupervisor.html",

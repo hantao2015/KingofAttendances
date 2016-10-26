@@ -173,7 +173,7 @@ function main(){
    
     var resid=appConfig.shifrpttofmanager.resid;
     var subresid=appConfig.shifrpttofmanager.subresid;
-    var cmswhere;
+    var cmswhere='';
     if (appConfig.app.debug)
     {cmswhere="C3_525699724860=2168";}
     shiftPanel.start();
