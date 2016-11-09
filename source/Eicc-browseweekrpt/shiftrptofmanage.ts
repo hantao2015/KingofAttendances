@@ -81,7 +81,7 @@ class Shiftrptofmanage extends miniPanel {
       }
       
        var yearmonth=data[0].C3_525699725531;//主表考勤月份
-       var dates:string =(data[0].C3_525699725313)//主表开始时间
+       var dates:string =(data[0].C3_531912802153)//主表开始时间
         
        
        var startDate=new Date(dates.substr(0,4)+'-'+ dates.substr(4,2)+'-'+ dates.substr(6,2));

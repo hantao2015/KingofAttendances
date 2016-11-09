@@ -69,7 +69,7 @@ class ShiftrptofMajordomo extends miniPanel {
     
        className="mini-panel mini-panel-success";
        var yearmonth=data[0].C3_526389709184;
-       var dates:string =(data[0].C3_526389708966)
+       var dates:string =(data[0].C3_531915818570)
        var startDate=new Date(dates.substr(0,4)+'-'+ dates.substr(4,2)+'-'+ dates.substr(6,2));
       title =dates+" 日产线排班整体情况<br>"+dates+" Shift Arrangement Overall Data";
         data[0].C3_526389712164=(data[0].C3_526389712164*100);

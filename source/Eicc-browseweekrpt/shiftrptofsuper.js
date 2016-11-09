@@ -56,7 +56,7 @@ var Shiftrptofsuper = (function (_super) {
         var dates = "";
         var title;
         var style = "";
-        dates = (data[0].C3_525698252634 + "~" + data[0].C3_526580236305);
+        dates = (data[0].C3_531912624859 + "~" + data[0].C3_526580236305);
         title = dates + " 日产线排班整体情况<br>" + dates + " Shift Arrangement Overall Data";
         if (data[0].C3_526393560160 == "Y") {
             className = "mini-panel mini-panel-danger";

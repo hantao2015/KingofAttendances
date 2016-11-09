@@ -21,7 +21,7 @@ KingofAttendances.ShiftManage = new function () {
         appConfig = aappConfig;
         $("#spCount").html(data[0].C3_525716987383);
         $("#spHour").html(data[0].C3_526578576195);
-        $("#spDate").html(data[0].C3_525699725313 + "~" + data[0].C3_526580294945);
+        $("#spDate").html(data[0].C3_531912802153 + "~" + data[0].C3_526580294945);
         $("#spMonth").html(data[0].C3_525699725531);
         $("#spManage").html(data[0].C3_525699725094);
         $("#spEverageHour").html(data[0].C3_527627780180);
@@ -111,7 +111,7 @@ KingofAttendances.ShiftManage = new function () {
         appConfig = aappConfig;
         $("#spHour").html(data[0].C3_526577949788);
         $("#spCount").html(data[0].C3_525716459309);
-        $("#spDate").html(data[0].C3_525698252634 + "~" + data[0].C3_526580236305);
+        $("#spDate").html(data[0].C3_531912624859 + "~" + data[0].C3_526580236305);
         $("#spMonth").html(data[0].C3_525698252852);
         $("#spSupervisor").html(data[0].C3_525697777450);
         $("#spEverageHour").html(data[0].C3_527627934738);

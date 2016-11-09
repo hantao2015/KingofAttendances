@@ -23,7 +23,7 @@ KingofAttendances.ShiftSupervisor=new function() {
        appConfig=aappConfig;
             $("#spCount").html(data[0].C3_525716459309);//排班人数
             $("#spHour").html(data[0].C3_526577949788);//排班小时
-            $("#spDate").html(data[0].C3_525698252634+"~"+data[0].C3_526580236305);//排班日期
+            $("#spDate").html(data[0].C3_531912624859+"~"+data[0].C3_526580236305);//排班日期
             $("#spPervisor").html(data[0].C3_525697777450);//主管名称
             $("#spMonth").html(data[0].C3_525698252852);//考勤月份
           //  $("#spManage").html(data[0].C3_525697777887);//经理名称
@@ -140,7 +140,7 @@ KingofAttendances.ShiftSupervisor=new function() {
       $("#proLine").html(data[0].C3_525642615889);
             $("#spHour").html(data[0].C3_526578100819);
 			 $("#spCount").html(data[0].C3_525715678864);
-            $("#spDate").html(data[0].C3_525698130095+"~"+data[0].C3_526580176792);
+            $("#spDate").html(data[0].C3_531911850334+"~"+data[0].C3_526580176792);
             $("#spMonth").html(data[0].C3_525698192994);
             $("#spMaster").html(data[0].C3_525715020942);
             $("#spEverageHour").html(data[0].C3_527626009087);//人均排班时间

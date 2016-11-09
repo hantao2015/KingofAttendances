@@ -12,7 +12,7 @@ KingofAttendances.ShiftMajordomo=new function() {
             $("#spMajordomo").html(data[0].C3_526389708747);
             $("#spCount").html(data[0].C3_526389709403);
             $("#spHour").html(data[0].C3_526578899253);
-            $("#spDate").html(data[0].C3_526389708966+"~"+data[0].C3_526580475483);
+            $("#spDate").html(data[0].C3_531915818570+"~"+data[0].C3_526580475483);
             $("#spMonth").html(data[0].C3_526389709184);
                $("#spEverageHour").html(data[0].C3_527627855884);
             new mini.Form("form1").setData(o);
@@ -42,7 +42,7 @@ KingofAttendances.ShiftMajordomo=new function() {
         mini.parse();
             $("#spHour").html(data[0].C3_526578576195);
 			      $("#spCount").html(data[0].C3_525716987383);
-            $("#spDate").html(data[0].C3_525699725313+"~"+data[0].C3_526580294945);
+            $("#spDate").html(data[0].C3_531912802153+"~"+data[0].C3_526580294945);
             $("#spMonth").html(data[0].C3_525699725531);
             $("#spSupervisor").html(data[0].C3_525699725094);
            $("#spEverageHour").html(data[0].C3_527627780180);

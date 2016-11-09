@@ -65,7 +65,7 @@ class Shiftrptofsuper extends miniPanel {
        var title;
        var  style="";
        
-       dates =(data[0].C3_525698252634+"~"+data[0].C3_526580236305);
+       dates =(data[0].C3_531912624859+"~"+data[0].C3_526580236305);
        title =dates+" 日产线排班整体情况<br>"+dates+" Shift Arrangement Overall Data";
 
        
